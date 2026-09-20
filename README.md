@@ -76,6 +76,23 @@ Silhouette Analysis — calculated silhouette scores for k = 2 to 10 to measure 
 
 The Elbow Method indicated k = 3 as the optimal number of clusters.
 
+5. K-Means Clustering
+Fitted the final model with k = 3, using n_init = 10 and random_state = 42 for reproducibility.
+
+Assigned each observation a cluster label (0, 1, or 2).
+
+6. Cluster Validation & Visualisation
+Applied Principal Component Analysis (PCA) to reduce the 5D scaled data to 2D for visual inspection.
+
+Plotted the clusters on the first two principal components to confirm separation.
+
+Computed the standardised centroid of each cluster to define its pollution "profile".
+
+7. Interpretation & Export
+Interpreted each cluster based on its dominant pollutants (see Key Findings).
+
+Exported the original data with cluster labels to clustered_data.xlsx for downstream use.
+
 ---
 
 ## 📊 Key Findings
