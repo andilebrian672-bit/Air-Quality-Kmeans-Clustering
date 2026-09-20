@@ -46,23 +46,35 @@ By clustering monitoring data into distinct pollution "profiles," decision-maker
 ---
 
 ## 🔬 Methodology
-┌─────────────────────┐
-│ 1. Data Loading │ → 3,347 rows × 5 pollutant features
-├─────────────────────┤
-│ 2. EDA │ → Descriptive stats, correlation heatmap, distributions
-├─────────────────────┤
-│ 3. Preprocessing │ → StandardScaler normalisation (k-means is scale-sensitive)
-├─────────────────────┤
-│ 4. Optimal k │ → Elbow Method + Silhouette Score cross-validation
-├─────────────────────┤
-│ 5. Clustering │ → K-Means (k=3, n_init=10, random_state=42)
-├─────────────────────┤
-│ 6. Validation │ → PCA 2D visualisation, centroid profiling
-├─────────────────────┤
-│ 7. Interpretation │ → Cluster labelling & domain insights
-└─────────────────────┘
+The analysis follows a standard unsupervised learning pipeline, implemented in Python with scikit-learn.
 
-text
+1. Data Loading & Inspection
+Loaded the dataset (airpoll_spreadsheet.xlsx) into a Pandas DataFrame.
+
+Confirmed shape: 3,347 observations × 5 pollutant features.
+
+Verified data types and checked for missing values — none found.
+
+2. Exploratory Data Analysis (EDA)
+Generated descriptive statistics (mean, standard deviation, quartiles, min/max) for each pollutant.
+
+Built a correlation matrix heatmap to identify relationships between pollutants.
+
+Plotted histograms with KDE curves to inspect the distribution and skewness of each variable.
+
+3. Data Preprocessing
+Applied StandardScaler to normalise all five features to mean = 0 and standard deviation = 1.
+
+This step is essential because k-means uses Euclidean distance and is sensitive to differences in scale.
+
+4. Determining the Optimal Number of Clusters
+Two complementary methods were used:
+
+Elbow Method — plotted inertia (within-cluster sum of squares) for k = 1 to 10, then identified the bend in the curve.
+
+Silhouette Analysis — calculated silhouette scores for k = 2 to 10 to measure cluster cohesion and separation.
+
+The Elbow Method indicated k = 3 as the optimal number of clusters.
 
 ---
 
